@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		82CE23EE27EAB3FB00E58C45 /* MProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CE23ED27EAB3FB00E58C45 /* MProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82CE240527EAB54300E58C45 /* MProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F427EAB54200E58C45 /* MProgress.swift */; };
+		82CE240627EAB54300E58C45 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F527EAB54200E58C45 /* ProgressView.swift */; };
+		82CE240727EAB54300E58C45 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F627EAB54200E58C45 /* ProgressType.swift */; };
+		82CE240827EAB54300E58C45 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F827EAB54300E58C45 /* Progress.swift */; };
+		82CE240927EAB54300E58C45 /* Bounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F927EAB54300E58C45 /* Bounce.swift */; };
+		82CE240A27EAB54300E58C45 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FA27EAB54300E58C45 /* Flow.swift */; };
+		82CE240B27EAB54300E58C45 /* Wander.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FB27EAB54300E58C45 /* Wander.swift */; };
+		82CE240C27EAB54300E58C45 /* Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FC27EAB54300E58C45 /* Fold.swift */; };
+		82CE240D27EAB54300E58C45 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FD27EAB54300E58C45 /* Wave.swift */; };
+		82CE240E27EAB54300E58C45 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FE27EAB54300E58C45 /* Pulse.swift */; };
+		82CE240F27EAB54300E58C45 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23FF27EAB54300E58C45 /* Grid.swift */; };
+		82CE241027EAB54300E58C45 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE240027EAB54300E58C45 /* Plane.swift */; };
+		82CE241127EAB54300E58C45 /* Chase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE240127EAB54300E58C45 /* Chase.swift */; };
+		82CE241227EAB54300E58C45 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE240227EAB54300E58C45 /* Circle.swift */; };
+		82CE241327EAB54300E58C45 /* Swing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE240327EAB54300E58C45 /* Swing.swift */; };
+		82CE241427EAB54300E58C45 /* Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE240427EAB54300E58C45 /* Fade.swift */; };
+		82CE241E27EAD2D300E58C45 /* MProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE241D27EAD2D300E58C45 /* MProgressModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		82CE23EA27EAB3FB00E58C45 /* MProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82CE23ED27EAB3FB00E58C45 /* MProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MProgress.h; sourceTree = "<group>"; };
+		82CE23F427EAB54200E58C45 /* MProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MProgress.swift; sourceTree = "<group>"; };
+		82CE23F527EAB54200E58C45 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		82CE23F627EAB54200E58C45 /* ProgressType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
+		82CE23F827EAB54300E58C45 /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		82CE23F927EAB54300E58C45 /* Bounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounce.swift; sourceTree = "<group>"; };
+		82CE23FA27EAB54300E58C45 /* Flow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		82CE23FB27EAB54300E58C45 /* Wander.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wander.swift; sourceTree = "<group>"; };
+		82CE23FC27EAB54300E58C45 /* Fold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fold.swift; sourceTree = "<group>"; };
+		82CE23FD27EAB54300E58C45 /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		82CE23FE27EAB54300E58C45 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pulse.swift; sourceTree = "<group>"; };
+		82CE23FF27EAB54300E58C45 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		82CE240027EAB54300E58C45 /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		82CE240127EAB54300E58C45 /* Chase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chase.swift; sourceTree = "<group>"; };
+		82CE240227EAB54300E58C45 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		82CE240327EAB54300E58C45 /* Swing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swing.swift; sourceTree = "<group>"; };
+		82CE240427EAB54300E58C45 /* Fade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fade.swift; sourceTree = "<group>"; };
+		82CE241D27EAD2D300E58C45 /* MProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MProgressModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82CE23E727EAB3FB00E58C45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		82CE23E027EAB3FB00E58C45 = {
+			isa = PBXGroup;
+			children = (
+				82CE23EC27EAB3FB00E58C45 /* MProgress */,
+				82CE23EB27EAB3FB00E58C45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		82CE23EB27EAB3FB00E58C45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82CE23EA27EAB3FB00E58C45 /* MProgress.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82CE23EC27EAB3FB00E58C45 /* MProgress */ = {
+			isa = PBXGroup;
+			children = (
+				82CE23ED27EAB3FB00E58C45 /* MProgress.h */,
+				82CE23F427EAB54200E58C45 /* MProgress.swift */,
+				82CE241D27EAD2D300E58C45 /* MProgressModel.swift */,
+				82CE23F627EAB54200E58C45 /* ProgressType.swift */,
+				82CE23F527EAB54200E58C45 /* ProgressView.swift */,
+				82CE23F727EAB54300E58C45 /* Style */,
+			);
+			path = MProgress;
+			sourceTree = "<group>";
+		};
+		82CE23F727EAB54300E58C45 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				82CE23F827EAB54300E58C45 /* Progress.swift */,
+				82CE23F927EAB54300E58C45 /* Bounce.swift */,
+				82CE23FA27EAB54300E58C45 /* Flow.swift */,
+				82CE23FB27EAB54300E58C45 /* Wander.swift */,
+				82CE23FC27EAB54300E58C45 /* Fold.swift */,
+				82CE23FD27EAB54300E58C45 /* Wave.swift */,
+				82CE23FE27EAB54300E58C45 /* Pulse.swift */,
+				82CE23FF27EAB54300E58C45 /* Grid.swift */,
+				82CE240027EAB54300E58C45 /* Plane.swift */,
+				82CE240127EAB54300E58C45 /* Chase.swift */,
+				82CE240227EAB54300E58C45 /* Circle.swift */,
+				82CE240327EAB54300E58C45 /* Swing.swift */,
+				82CE240427EAB54300E58C45 /* Fade.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		82CE23E527EAB3FB00E58C45 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82CE23EE27EAB3FB00E58C45 /* MProgress.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		82CE23E927EAB3FB00E58C45 /* MProgress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82CE23F127EAB3FB00E58C45 /* Build configuration list for PBXNativeTarget "MProgress" */;
+			buildPhases = (
+				82CE23E527EAB3FB00E58C45 /* Headers */,
+				82CE23E627EAB3FB00E58C45 /* Sources */,
+				82CE23E727EAB3FB00E58C45 /* Frameworks */,
+				82CE23E827EAB3FB00E58C45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MProgress;
+			productName = MProgress;
+			productReference = 82CE23EA27EAB3FB00E58C45 /* MProgress.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82CE23E127EAB3FB00E58C45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					82CE23E927EAB3FB00E58C45 = {
+						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1330;
+					};
+				};
+			};
+			buildConfigurationList = 82CE23E427EAB3FB00E58C45 /* Build configuration list for PBXProject "MProgress" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 82CE23E027EAB3FB00E58C45;
+			productRefGroup = 82CE23EB27EAB3FB00E58C45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82CE23E927EAB3FB00E58C45 /* MProgress */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82CE23E827EAB3FB00E58C45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82CE23E627EAB3FB00E58C45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82CE241127EAB54300E58C45 /* Chase.swift in Sources */,
+				82CE240527EAB54300E58C45 /* MProgress.swift in Sources */,
+				82CE240927EAB54300E58C45 /* Bounce.swift in Sources */,
+				82CE240C27EAB54300E58C45 /* Fold.swift in Sources */,
+				82CE240D27EAB54300E58C45 /* Wave.swift in Sources */,
+				82CE241427EAB54300E58C45 /* Fade.swift in Sources */,
+				82CE240F27EAB54300E58C45 /* Grid.swift in Sources */,
+				82CE240627EAB54300E58C45 /* ProgressView.swift in Sources */,
+				82CE241227EAB54300E58C45 /* Circle.swift in Sources */,
+				82CE240A27EAB54300E58C45 /* Flow.swift in Sources */,
+				82CE241327EAB54300E58C45 /* Swing.swift in Sources */,
+				82CE240827EAB54300E58C45 /* Progress.swift in Sources */,
+				82CE240B27EAB54300E58C45 /* Wander.swift in Sources */,
+				82CE240727EAB54300E58C45 /* ProgressType.swift in Sources */,
+				82CE241027EAB54300E58C45 /* Plane.swift in Sources */,
+				82CE241E27EAD2D300E58C45 /* MProgressModel.swift in Sources */,
+				82CE240E27EAB54300E58C45 /* Pulse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		82CE23EF27EAB3FB00E58C45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		82CE23F027EAB3FB00E58C45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		82CE23F227EAB3FB00E58C45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minhechen.MProgress;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		82CE23F327EAB3FB00E58C45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minhechen.MProgress;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82CE23E427EAB3FB00E58C45 /* Build configuration list for PBXProject "MProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82CE23EF27EAB3FB00E58C45 /* Debug */,
+				82CE23F027EAB3FB00E58C45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82CE23F127EAB3FB00E58C45 /* Build configuration list for PBXNativeTarget "MProgress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82CE23F227EAB3FB00E58C45 /* Debug */,
+				82CE23F327EAB3FB00E58C45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82CE23E127EAB3FB00E58C45 /* Project object */;
+}
