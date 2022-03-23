@@ -24,3 +24,8 @@ public enum ProgressType {
     case wander // TODO
 }
 ```
+
+---
+
+#### **Reference**
+[SpinKit](https://github.com/tobiasahlin/SpinKit)
