@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8249C80127EB241F0036A129 /* MProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82CE241A27EAB57A00E58C45 /* MProgress.framework */; };
 		8249C80227EB241F0036A129 /* MProgress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82CE241A27EAB57A00E58C45 /* MProgress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8249C80927EC056A0036A129 /* MColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8249C80827EC056A0036A129 /* MColor.swift */; };
 		82CE23CD27EAB3BF00E58C45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23CC27EAB3BF00E58C45 /* AppDelegate.swift */; };
 		82CE23CF27EAB3BF00E58C45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23CE27EAB3BF00E58C45 /* SceneDelegate.swift */; };
 		82CE23D127EAB3BF00E58C45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23D027EAB3BF00E58C45 /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8249C80827EC056A0036A129 /* MColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MColor.swift; sourceTree = "<group>"; };
 		82CE23C927EAB3BF00E58C45 /* MProgressDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MProgressDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CE23CC27EAB3BF00E58C45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82CE23CE27EAB3BF00E58C45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8249C80727EC04AA0036A129 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				8249C80827EC056A0036A129 /* MColor.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		82CE23C027EAB3BE00E58C45 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 				82CE23CC27EAB3BF00E58C45 /* AppDelegate.swift */,
 				82CE23CE27EAB3BF00E58C45 /* SceneDelegate.swift */,
 				82CE23D027EAB3BF00E58C45 /* ViewController.swift */,
+				8249C80727EC04AA0036A129 /* Tools */,
 				82CE241B27EAB59700E58C45 /* ProgressCollectionViewCell.swift */,
 				82CE23D227EAB3BF00E58C45 /* Main.storyboard */,
 				82CE23D527EAB3C100E58C45 /* Assets.xcassets */,
@@ -203,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8249C80927EC056A0036A129 /* MColor.swift in Sources */,
 				82CE23D127EAB3BF00E58C45 /* ViewController.swift in Sources */,
 				82CE23CD27EAB3BF00E58C45 /* AppDelegate.swift in Sources */,
 				82CE241C27EAB59700E58C45 /* ProgressCollectionViewCell.swift in Sources */,

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8249C80627EC04770036A129 /* MUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8249C80527EC04770036A129 /* MUIColor.swift */; };
+		82767F1527ECA2C800C16FB6 /* Pendulum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82767F1427ECA2C800C16FB6 /* Pendulum.swift */; };
+		82767F1727ECA7F600C16FB6 /* Discrete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82767F1627ECA7F600C16FB6 /* Discrete.swift */; };
 		82CE23EE27EAB3FB00E58C45 /* MProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CE23ED27EAB3FB00E58C45 /* MProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82CE240527EAB54300E58C45 /* MProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F427EAB54200E58C45 /* MProgress.swift */; };
 		82CE240627EAB54300E58C45 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CE23F527EAB54200E58C45 /* ProgressView.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8249C80527EC04770036A129 /* MUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUIColor.swift; sourceTree = "<group>"; };
+		82767F1427ECA2C800C16FB6 /* Pendulum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pendulum.swift; sourceTree = "<group>"; };
+		82767F1627ECA7F600C16FB6 /* Discrete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discrete.swift; sourceTree = "<group>"; };
 		82CE23EA27EAB3FB00E58C45 /* MProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CE23ED27EAB3FB00E58C45 /* MProgress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MProgress.h; sourceTree = "<group>"; };
 		82CE23F427EAB54200E58C45 /* MProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MProgress.swift; sourceTree = "<group>"; };
@@ -60,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8249C80427EC04360036A129 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				8249C80527EC04770036A129 /* MUIColor.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		82CE23E027EAB3FB00E58C45 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +98,7 @@
 				82CE241D27EAD2D300E58C45 /* MProgressModel.swift */,
 				82CE23F627EAB54200E58C45 /* ProgressType.swift */,
 				82CE23F527EAB54200E58C45 /* ProgressView.swift */,
+				8249C80427EC04360036A129 /* Tools */,
 				82CE23F727EAB54300E58C45 /* Style */,
 			);
 			path = MProgress;
@@ -93,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				82CE23F827EAB54300E58C45 /* Progress.swift */,
+				82CE240027EAB54300E58C45 /* Plane.swift */,
+				82CE240127EAB54300E58C45 /* Chase.swift */,
 				82CE23F927EAB54300E58C45 /* Bounce.swift */,
 				82CE23FA27EAB54300E58C45 /* Flow.swift */,
 				82CE23FB27EAB54300E58C45 /* Wander.swift */,
@@ -100,11 +117,11 @@
 				82CE23FD27EAB54300E58C45 /* Wave.swift */,
 				82CE23FE27EAB54300E58C45 /* Pulse.swift */,
 				82CE23FF27EAB54300E58C45 /* Grid.swift */,
-				82CE240027EAB54300E58C45 /* Plane.swift */,
-				82CE240127EAB54300E58C45 /* Chase.swift */,
 				82CE240227EAB54300E58C45 /* Circle.swift */,
 				82CE240327EAB54300E58C45 /* Swing.swift */,
 				82CE240427EAB54300E58C45 /* Fade.swift */,
+				82767F1427ECA2C800C16FB6 /* Pendulum.swift */,
+				82767F1627ECA7F600C16FB6 /* Discrete.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -193,9 +210,11 @@
 				82CE240527EAB54300E58C45 /* MProgress.swift in Sources */,
 				82CE240927EAB54300E58C45 /* Bounce.swift in Sources */,
 				82CE240C27EAB54300E58C45 /* Fold.swift in Sources */,
+				82767F1727ECA7F600C16FB6 /* Discrete.swift in Sources */,
 				82CE240D27EAB54300E58C45 /* Wave.swift in Sources */,
 				82CE241427EAB54300E58C45 /* Fade.swift in Sources */,
 				82CE240F27EAB54300E58C45 /* Grid.swift in Sources */,
+				8249C80627EC04770036A129 /* MUIColor.swift in Sources */,
 				82CE240627EAB54300E58C45 /* ProgressView.swift in Sources */,
 				82CE241227EAB54300E58C45 /* Circle.swift in Sources */,
 				82CE240A27EAB54300E58C45 /* Flow.swift in Sources */,
@@ -206,6 +225,7 @@
 				82CE241027EAB54300E58C45 /* Plane.swift in Sources */,
 				82CE241E27EAD2D300E58C45 /* MProgressModel.swift in Sources */,
 				82CE240E27EAB54300E58C45 /* Pulse.swift in Sources */,
+				82767F1527ECA2C800C16FB6 /* Pendulum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

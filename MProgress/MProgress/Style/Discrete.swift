@@ -1,13 +1,13 @@
 //
-//  Chase.swift
+//  Discrete.swift
 //  MProgress
 //
-//  Created by mchen on 2022/3/22.
+//  Created by mchen on 2022/3/24.
 //
 
 import UIKit
 
-class Chase: Progress {
+class Discrete: Progress {
     private var contentColor: UIColor?
 
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -25,7 +25,7 @@ class Chase: Progress {
         self.contentColor = color
         self.layoutIfNeeded()
     }
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.startAnimation()
@@ -55,28 +55,28 @@ class Chase: Progress {
             let rate = Float(i) * 1 / 5
             let fromScale = 1 - rate
             let toScale = 0.2 + rate
-            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.1 , 0.25, 1)
+            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.1 + rate, 0.25, 1)
 
             let animationScale = CABasicAnimation(keyPath: "transform.scale")
-            animationScale.duration = duration - Double(rate)
+            animationScale.duration = duration
             animationScale.repeatCount = HUGE
             animationScale.fromValue = fromScale
             animationScale.toValue = toScale
 
             let animationPosition = CAKeyframeAnimation(keyPath: "position")
-            animationPosition.duration = duration - Double(rate)
+            animationPosition.duration = duration
             animationPosition.repeatCount = HUGE
-            animationPosition.fillMode = .forwards
-//            animationPosition.calculationMode = .discrete
+            animationPosition.calculationMode = .discrete
 
             animationPosition.path = pathPosition.cgPath
 
             let animationGroup = CAAnimationGroup()
             animationGroup.animations = [animationScale, animationPosition]
             animationGroup.timingFunction = timeFunc
-            animationGroup.duration = duration - Double(rate)
+            animationGroup.duration = duration
             animationGroup.repeatCount = HUGE
             animationGroup.isRemovedOnCompletion = false
+//            animationGroup.autoreverses = true
 
             let chaseLayer = CAShapeLayer()
             chaseLayer.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
@@ -89,51 +89,5 @@ class Chase: Progress {
             layers.append(chaseLayer)
         }
 
-        let pathPosition2 = UIBezierPath(arcCenter: CGPoint(x: width/2, y: height/2), radius: radiusX, startAngle: 1.5 * .pi, endAngle: 3.5 * .pi, clockwise: true)
-
-//        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { timer in
-//            for i in 0..<5 {
-//                let rate = Float(i) * 1 / 5
-//                let fromScale = 1 - rate
-//                let toScale = 0.2 + rate
-//                let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 1 + rate, 0.25, 1)
-//
-//                let animationScale = CABasicAnimation(keyPath: "transform.scale")
-//                animationScale.duration = duration
-//                animationScale.repeatCount = HUGE
-//                animationScale.fromValue = fromScale
-//                animationScale.toValue = toScale
-//
-//                let animationPosition = CAKeyframeAnimation(keyPath: "position")
-//                animationPosition.duration = duration
-//                animationPosition.repeatCount = HUGE
-//                animationPosition.path = pathPosition2.cgPath
-//
-//                let animation = CAAnimationGroup()
-//                animation.animations = [animationScale, animationPosition]
-//                animation.timingFunction = timeFunc
-//                animation.duration = duration
-//                animation.repeatCount = HUGE
-//                animation.isRemovedOnCompletion = false
-//
-//                let chaseLayer = CAShapeLayer()
-//                chaseLayer.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
-//                chaseLayer.path = path.cgPath
-//                chaseLayer.fillColor = self.contentColor?.cgColor ?? UIColor.white.cgColor
-//
-//                chaseLayer.add(animation, forKey: "animation")
-//
-//                self.layer.addSublayer(chaseLayer)
-//            }
-//        }
-    }
-}
-
-extension Chase: CAAnimationDelegate {
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-//        if let animation = anim as? CABasicAnimation {
-//            animation.fromValue = 0.2
-//            animation.toValue = 1.0
-//        }
     }
 }

@@ -9,19 +9,40 @@ import UIKit
 
 public let progressScale = 270.0 / 428.0
 
+// UIActivityIndicatorView 37.0
+
 class Progress: UIView {
+
+    var progressInsets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12) {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+
+    var progressSize: CGSize {
+        let size = min(bounds.width - (progressInsets.left + progressInsets.right), bounds.height - (progressInsets.top + progressInsets.bottom))
+        return CGSize(width: size, height: size)
+    }
+
+    var progressOrigin: CGPoint {
+        return CGPoint(x: (bounds.width - progressSize.width) / 2, y: (bounds.height - progressSize.height) / 2)
+    }
+
+    var progressBounds: CGRect {
+        return CGRect(origin: .zero, size: progressSize)
+    }
+
+    var progressRect: CGRect {
+        return CGRect(origin: progressOrigin, size: progressSize)
+    }
 
     lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17.0)
         return label
     }()
-    var cornerValue: CGFloat = 15.0
 
-    lazy var progressLayer: CAShapeLayer = {
-        let layer = CAShapeLayer()
-        return layer
-    }()
+    var cornerValue: CGFloat = 15.0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,12 +54,12 @@ class Progress: UIView {
     }
 
     private func setupUI() {
-        self.setColor(UIColor.white)
-        self.setCorner(15.0)
+        self.setContentColor(UIColor.white)
+//        self.setCorner(15.0)
     }
 
-    func setColor(_ color: UIColor) {
-        self.backgroundColor = color
+    func setContentColor(_ color: UIColor) {
+        self.layoutIfNeeded()
     }
 
     func setCorner(_ cornerValue: CGFloat) {
@@ -56,7 +77,10 @@ class Progress: UIView {
 
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
+    }
 
+    func startAnimation() {
+        // default
     }
 
 }

@@ -9,8 +9,11 @@ import UIKit
 
 class ProgressView: UIView {
     var progressModel: MProgressModel?
-    private var backgroundView: UIView?
-    private var progress: Progress?
+    private var progress: Progress = Progress()
+    lazy var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
 
     init(_ model: MProgressModel) {
         super.init(frame: CGRect.zero)
@@ -24,15 +27,43 @@ class ProgressView: UIView {
 
     private func setupUI() {
         guard let progressModel = self.progressModel else { return }
-        backgroundView = UIView()
+
+        self.setupContentView()
+        self.setupProgress(progressModel)
+        self.backgroundColor = progressModel.backgroundColor
+    }
+
+    func setupContentView() {
+        self.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
+        contentView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
+        contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        contentView.layoutIfNeeded()
+    }
+
+    func setupProgress(_ progressModel: MProgressModel) {
+        self.progress = self.progress(progressModel)
+        contentView.addSubview(progress)
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        progress.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
+        progress.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
+        progress.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        progress.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        progress.layoutIfNeeded()
+    }
+
+    func progress(_ progressModel: MProgressModel) -> Progress {
+
         let type = progressModel.progressType
         switch type {
         case .plane:
             progress = Plane()
         case .chase:
-            progress = Plane()
+            progress = Chase()
         case .bounce:
-            progress = Plane()
+            progress = Bounce()
         case .wave:
             progress = Plane()
         case .pulse:
@@ -54,17 +85,9 @@ class ProgressView: UIView {
         case .default:
             progress = Plane()
         }
-        guard let progress = progress else {
-            return
-        }
-        progress.backgroundColor = UIColor.red
-        self.backgroundColor = UIColor.yellow
-        self.addSubview(progress)
-        progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
-        progress.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
-        progress.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        progress.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        progress.layoutIfNeeded()
+        progress.startAnimation()
+        progress.backgroundColor = progressModel.progressBackgroundColor
+        progress.setContentColor(progressModel.progressColor)
+        return progress
     }
 }

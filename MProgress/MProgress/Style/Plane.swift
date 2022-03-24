@@ -9,6 +9,11 @@ import UIKit
 
 class Plane: Progress {
 
+    private lazy var progressLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        return layer
+    }()
+    
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         progressLayer.masksToBounds = true
@@ -17,7 +22,11 @@ class Plane: Progress {
 
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
-        progressLayer.fillColor = UIColor.white.cgColor
+    }
+
+    override func setContentColor(_ color: UIColor) {
+        progressLayer.fillColor = color.cgColor
+        self.layoutIfNeeded()
     }
 
     public override func layoutSubviews() {
@@ -28,10 +37,10 @@ class Plane: Progress {
 
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        self.addAnimationGroup()
     }
 
-    func addAnimationGroup() {
+    override func startAnimation() {
+        super.startAnimation()
         var yRotation = CATransform3DRotate(CATransform3DIdentity, .pi, 1.0, 0, 0)
         yRotation.m34 = -1.0/180
         var zRoatation = CATransform3DRotate(CATransform3DIdentity, .pi, 0, 0, 1.0)

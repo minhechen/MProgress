@@ -49,11 +49,13 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         switch progressType {
         case .plane:
             titleText = "plane"
-            MProgress.show("Hello world!", context: self)
+            MProgress.show("Hello world!", context: self, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
         case .chase:
             titleText = "chase"
+            MProgress.show("Hello world!", context: self, type: .chase, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
         case .bounce:
             titleText = "bounce"
+            MProgress.show("Hello world!", context: self, type: .bounce, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
         case .wave:
             titleText = "wave"
         case .pulse:

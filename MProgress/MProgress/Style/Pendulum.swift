@@ -1,13 +1,13 @@
 //
-//  Chase.swift
+//  Pendulum.swift
 //  MProgress
 //
-//  Created by mchen on 2022/3/22.
+//  Created by mchen on 2022/3/24.
 //
 
 import UIKit
 
-class Chase: Progress {
+class Pendulum: Progress {
     private var contentColor: UIColor?
 
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -25,7 +25,7 @@ class Chase: Progress {
         self.contentColor = color
         self.layoutIfNeeded()
     }
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.startAnimation()
@@ -55,28 +55,26 @@ class Chase: Progress {
             let rate = Float(i) * 1 / 5
             let fromScale = 1 - rate
             let toScale = 0.2 + rate
-            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.1 , 0.25, 1)
+            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.8 + rate, 0.25, 1)
 
             let animationScale = CABasicAnimation(keyPath: "transform.scale")
-            animationScale.duration = duration - Double(rate)
+            animationScale.duration = duration
             animationScale.repeatCount = HUGE
             animationScale.fromValue = fromScale
             animationScale.toValue = toScale
 
             let animationPosition = CAKeyframeAnimation(keyPath: "position")
-            animationPosition.duration = duration - Double(rate)
+            animationPosition.duration = duration
             animationPosition.repeatCount = HUGE
-            animationPosition.fillMode = .forwards
-//            animationPosition.calculationMode = .discrete
-
             animationPosition.path = pathPosition.cgPath
 
             let animationGroup = CAAnimationGroup()
             animationGroup.animations = [animationScale, animationPosition]
             animationGroup.timingFunction = timeFunc
-            animationGroup.duration = duration - Double(rate)
+            animationGroup.duration = duration
             animationGroup.repeatCount = HUGE
             animationGroup.isRemovedOnCompletion = false
+            animationGroup.autoreverses = true
 
             let chaseLayer = CAShapeLayer()
             chaseLayer.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
@@ -125,15 +123,6 @@ class Chase: Progress {
 //
 //                self.layer.addSublayer(chaseLayer)
 //            }
-//        }
-    }
-}
-
-extension Chase: CAAnimationDelegate {
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-//        if let animation = anim as? CABasicAnimation {
-//            animation.fromValue = 0.2
-//            animation.toValue = 1.0
 //        }
     }
 }
