@@ -9,47 +9,67 @@ import UIKit
 
 class Swing: Progress {
 
+    private var leftCircleLayer = CAShapeLayer()
+    private var rightCircleLayer = CAShapeLayer()
+
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-//        progressLayer.masksToBounds = true
-//        layer.addSublayer(progressLayer)
+        layer.addSublayer(rightCircleLayer)
+        layer.addSublayer(leftCircleLayer)
     }
 
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
-//        progressLayer.fillColor = UIColor.white.cgColor
     }
 
     override func setContentColor(_ color: UIColor) {
         self.layoutIfNeeded()
+        leftCircleLayer.fillColor = color.cgColor
+        rightCircleLayer.fillColor = color.cgColor
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        progressLayer.path = UIBezierPath(rect: self.bounds).cgPath
-//        progressLayer.frame = self.bounds
+        let circleSize = CGSize(width: progressSize.width / 3, height: progressSize.height / 3)
+        leftCircleLayer.frame = CGRect(origin: progressOrigin,
+                                       size: circleSize)
+        leftCircleLayer.path = UIBezierPath(ovalIn: CGRect(origin: .zero, size: circleSize)).cgPath
+
+        rightCircleLayer.frame = CGRect(origin: progressOrigin,
+                                        size: circleSize)
+        rightCircleLayer.path = UIBezierPath(ovalIn: CGRect(origin: .zero, size: circleSize)).cgPath
+        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        self.addAnimationGroup()
     }
 
-    func addAnimationGroup() {
-        var yRotation = CATransform3DRotate(CATransform3DIdentity, .pi, 1.0, 0, 0)
-        yRotation.m34 = -1.0/180
-        var zRoatation = CATransform3DRotate(CATransform3DIdentity, .pi, 0, 0, 1.0)
-        zRoatation.m34 = -1.0/180
+    override func startAnimation() {
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.fromValue = 0.2
+        scaleAnimation.toValue = 1
+        scaleAnimation.repeatCount = .infinity
+        scaleAnimation.duration = 1.8
+        scaleAnimation.fillMode = .backwards
+        scaleAnimation.autoreverses = true
+        scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
-        let rotation = CAKeyframeAnimation(keyPath: "transform")
-        rotation.values = [CATransform3DIdentity, yRotation, zRoatation]
-        rotation.keyTimes = [0, 0.5, 1]
-        rotation.duration = 1.2
+        let positionAnimation = CAKeyframeAnimation(keyPath: "position")
+        positionAnimation.path = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: progressSize.width / 4 + leftCircleLayer.frame.size.width / 16 + progressOrigin.x, y: progressSize.height / 4 + leftCircleLayer.frame.size.height / 16 + progressOrigin.y), size: CGSize(width: progressSize.width / 2, height: progressSize.height / 2 ))).cgPath
+        positionAnimation.repeatCount = .infinity
+        positionAnimation.fillMode = .backwards
+        positionAnimation.duration = 1.8
+        positionAnimation.calculationMode = .paced
 
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [rotation]
-        animationGroup.repeatCount = .infinity
-        animationGroup.duration = 1.2 * rotation.duration
-//        progressLayer.add(animationGroup, forKey: nil)
+        leftCircleLayer.add(positionAnimation, forKey: nil)
+        leftCircleLayer.add(scaleAnimation, forKey: nil)
+
+        positionAnimation.beginTime = CACurrentMediaTime() + 0.3
+        scaleAnimation.toValue = CATransform3DScale(CATransform3DIdentity, 0.2, 0.2, 1)
+        scaleAnimation.fromValue = CATransform3DIdentity
+
+        rightCircleLayer.add(positionAnimation, forKey: nil)
+        rightCircleLayer.add(scaleAnimation, forKey: nil)
     }
 }

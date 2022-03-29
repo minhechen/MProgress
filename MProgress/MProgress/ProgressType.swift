@@ -25,4 +25,6 @@ public enum ProgressType {
     case grid // TODO
     case fold // TODO
     case wander // TODO
+    case pendulum // TODO
+    case loopCircle // TODO
 }

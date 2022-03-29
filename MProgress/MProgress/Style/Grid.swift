@@ -9,47 +9,68 @@ import UIKit
 
 class Grid: Progress {
 
+    private var cubeLayer = CAShapeLayer()
+    private var cubeRowReplicatorLayer = CAReplicatorLayer()
+    private var gridReplicatorLayer = CAReplicatorLayer()
+
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-//        progressLayer.masksToBounds = true
-//        layer.addSublayer(progressLayer)
+
+        for i in 0..<3 {
+//            let tempLayer = CAReplicatorLayer()
+//            layer.addSublayer(tempLayer)
+        }
+
+        cubeRowReplicatorLayer.instanceCount = 3
+        gridReplicatorLayer.instanceCount = 3
+
+        cubeRowReplicatorLayer.addSublayer(cubeLayer)
+        gridReplicatorLayer.addSublayer(cubeRowReplicatorLayer)
+        layer.addSublayer(gridReplicatorLayer)
     }
 
     override public func draw(_ rect: CGRect) {
         super.draw(rect)
-//        progressLayer.fillColor = UIColor.white.cgColor
     }
 
     override func setContentColor(_ color: UIColor) {
         self.layoutIfNeeded()
+        cubeLayer.fillColor = color.cgColor
+        cubeLayer.strokeColor = cubeLayer.fillColor
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        progressLayer.path = UIBezierPath(rect: self.bounds).cgPath
-//        progressLayer.frame = self.bounds
+        let cubeRect = progressBounds.applying(CGAffineTransform(scaleX: 1 / 3, y: 1 / 3))
+        cubeLayer.path = UIBezierPath(rect: cubeRect).cgPath
+        cubeLayer.frame = cubeRect
+        cubeRowReplicatorLayer.instanceTransform = CATransform3DTranslate(CATransform3DIdentity, 1, cubeRect.width, 0)
+        gridReplicatorLayer.instanceTransform = CATransform3DTranslate(CATransform3DIdentity, cubeRect.height, 0, 0)
+        gridReplicatorLayer.frame = progressRect
+
+        let transform = CATransform3DIdentity
+        gridReplicatorLayer.transform = CATransform3DRotate(transform, .pi, 1, 0, 0)
+        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        self.addAnimationGroup()
     }
 
-    func addAnimationGroup() {
-        var yRotation = CATransform3DRotate(CATransform3DIdentity, .pi, 1.0, 0, 0)
-        yRotation.m34 = -1.0/180
-        var zRoatation = CATransform3DRotate(CATransform3DIdentity, .pi, 0, 0, 1.0)
-        zRoatation.m34 = -1.0/180
+    override func startAnimation() {
+        let scaleAnim = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnim.fromValue = 1
+        scaleAnim.toValue = 0.05
+        scaleAnim.repeatCount = .infinity
+        scaleAnim.autoreverses = true
+        scaleAnim.fillMode = .forwards
+        scaleAnim.timingFunction = CAMediaTimingFunction(controlPoints: 0.5, 0.2, 0.4, 0.6)
+        scaleAnim.duration = 0.6
 
-        let rotation = CAKeyframeAnimation(keyPath: "transform")
-        rotation.values = [CATransform3DIdentity, yRotation, zRoatation]
-        rotation.keyTimes = [0, 0.5, 1]
-        rotation.duration = 1.2
+        cubeRowReplicatorLayer.instanceDelay = scaleAnim.duration / Double(cubeRowReplicatorLayer.instanceCount) / 2
+        gridReplicatorLayer.instanceDelay = scaleAnim.duration / Double(gridReplicatorLayer.instanceCount) / 2
 
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [rotation]
-        animationGroup.repeatCount = .infinity
-        animationGroup.duration = 1.2 * rotation.duration
-//        progressLayer.add(animationGroup, forKey: nil)
+        cubeLayer.add(scaleAnim, forKey: nil)
+        
     }
 }

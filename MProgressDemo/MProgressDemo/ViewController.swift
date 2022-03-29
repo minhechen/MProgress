@@ -56,6 +56,8 @@ class ViewController: UIViewController {
         progresses.append(.grid)
         progresses.append(.fold)
         progresses.append(.wander)
+        progresses.append(.pendulum)
+        progresses.append(.loopCircle)
     }
 
     func setupUI() {

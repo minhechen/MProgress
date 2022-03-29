@@ -13,6 +13,8 @@ public let progressScale = 270.0 / 428.0
 
 class Progress: UIView {
 
+    var progressModel: MProgressModel?
+
     var progressInsets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12) {
         didSet {
             setNeedsLayout()
@@ -49,13 +51,18 @@ class Progress: UIView {
         self.setupUI()
     }
 
+    init(_ model: MProgressModel) {
+        super.init(frame: CGRect.zero)
+        self.progressModel = model
+        self.setupUI()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     private func setupUI() {
         self.setContentColor(UIColor.white)
-//        self.setCorner(15.0)
     }
 
     func setContentColor(_ color: UIColor) {
@@ -83,4 +90,25 @@ class Progress: UIView {
         // default
     }
 
+    func progressContextRect(_ model: MProgressModel) -> CGRect {
+        if let context = model.context {
+            if context.isKind(of: UIView.classForCoder()) {
+                if let contentView = context as? UIView {
+                    return contentView.bounds
+                }
+            } else if context.isKind(of: UIViewController.classForCoder()) {
+                if let viewController = context as? UIViewController {
+                    return viewController.view.bounds
+                }
+            } else if context.isKind(of: UIWindow.classForCoder()) {
+                if let window = context as? UIWindow {
+                    return window.bounds
+                }
+            } else {
+                // Error
+                fatalError("does not recognize context")
+            }
+        }
+        return MProgress.shared.window?.bounds ?? CGRect.zero
+    }
 }

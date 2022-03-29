@@ -7,49 +7,22 @@
 
 import UIKit
 
-class Fade: Progress {
+class Fade: Circle {
 
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-//        progressLayer.masksToBounds = true
-//        layer.addSublayer(progressLayer)
-    }
+    override func startAnimation() {
+        let scaleAnim = CAKeyframeAnimation(keyPath: "opacity")
+        scaleAnim.values = [0, 1]
+        scaleAnim.keyTimes = [0.33, 1]
+        scaleAnim.repeatCount = .infinity
+        scaleAnim.autoreverses = true
+        scaleAnim.fillMode = .both
+        scaleAnim.timingFunction = .init(name: .easeOut)
+        scaleAnim.duration = 0.7
 
-    override public func draw(_ rect: CGRect) {
-        super.draw(rect)
-//        progressLayer.fillColor = UIColor.white.cgColor
-    }
-
-    override func setContentColor(_ color: UIColor) {
-        self.layoutIfNeeded()
-    }
-
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-//        progressLayer.path = UIBezierPath(rect: self.bounds).cgPath
-//        progressLayer.frame = self.bounds
-    }
-
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        self.addAnimationGroup()
-    }
-
-    func addAnimationGroup() {
-        var yRotation = CATransform3DRotate(CATransform3DIdentity, .pi, 1.0, 0, 0)
-        yRotation.m34 = -1.0/180
-        var zRoatation = CATransform3DRotate(CATransform3DIdentity, .pi, 0, 0, 1.0)
-        zRoatation.m34 = -1.0/180
-
-        let rotation = CAKeyframeAnimation(keyPath: "transform")
-        rotation.values = [CATransform3DIdentity, yRotation, zRoatation]
-        rotation.keyTimes = [0, 0.5, 1]
-        rotation.duration = 1.2
-
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [rotation]
-        animationGroup.repeatCount = .infinity
-        animationGroup.duration = 1.2 * rotation.duration
-//        progressLayer.add(animationGroup, forKey: nil)
+        circleLayers.enumerated().forEach {
+            scaleAnim.beginTime = CACurrentMediaTime() + 2 * Double($0.offset) * scaleAnim.duration / Double(circleLayers.count)
+            $0.element.add(scaleAnim, forKey: nil)
+            $0.element.fillColor = self.contentColor?.cgColor ?? UIColor.white.cgColor
+        }
     }
 }

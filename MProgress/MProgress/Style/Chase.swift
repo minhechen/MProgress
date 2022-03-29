@@ -48,35 +48,31 @@ class Chase: Progress {
 
         let path = UIBezierPath(arcCenter: CGPoint(x: radius/2, y: radius/2), radius: radius/2, startAngle: 0, endAngle: 2 * .pi, clockwise: false)
 
-        let pathPosition = UIBezierPath(arcCenter: CGPoint(x: width/2, y: height/2), radius: radiusX, startAngle: 1.5 * .pi, endAngle: 3.5 * .pi, clockwise: true)
+        let pathPosition = UIBezierPath(arcCenter: CGPoint(x: width/2, y: height/2), radius: radiusX, startAngle: 1.65 * .pi, endAngle: 3.65 * .pi, clockwise: true)
 
         var layers: [CAShapeLayer] = [CAShapeLayer]()
         for i in 0..<5 {
             let rate = Float(i) * 1 / 5
             let fromScale = 1 - rate
             let toScale = 0.2 + rate
-            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.1 , 0.25, 1)
+            let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 0.1 + rate, 0.25, 0.65)
 
             let animationScale = CABasicAnimation(keyPath: "transform.scale")
-            animationScale.duration = duration - Double(rate)
-            animationScale.repeatCount = HUGE
+            animationScale.duration = duration
+            animationScale.repeatCount = .infinity
             animationScale.fromValue = fromScale
             animationScale.toValue = toScale
 
             let animationPosition = CAKeyframeAnimation(keyPath: "position")
-            animationPosition.duration = duration - Double(rate)
-            animationPosition.repeatCount = HUGE
-            animationPosition.fillMode = .forwards
-//            animationPosition.calculationMode = .discrete
-
+            animationPosition.duration = duration
+            animationPosition.repeatCount = .infinity
             animationPosition.path = pathPosition.cgPath
 
             let animationGroup = CAAnimationGroup()
             animationGroup.animations = [animationScale, animationPosition]
             animationGroup.timingFunction = timeFunc
-            animationGroup.duration = duration - Double(rate)
-            animationGroup.repeatCount = HUGE
-            animationGroup.isRemovedOnCompletion = false
+            animationGroup.duration = duration
+            animationGroup.repeatCount = .infinity
 
             let chaseLayer = CAShapeLayer()
             chaseLayer.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
@@ -89,43 +85,6 @@ class Chase: Progress {
             layers.append(chaseLayer)
         }
 
-        let pathPosition2 = UIBezierPath(arcCenter: CGPoint(x: width/2, y: height/2), radius: radiusX, startAngle: 1.5 * .pi, endAngle: 3.5 * .pi, clockwise: true)
-
-//        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { timer in
-//            for i in 0..<5 {
-//                let rate = Float(i) * 1 / 5
-//                let fromScale = 1 - rate
-//                let toScale = 0.2 + rate
-//                let timeFunc = CAMediaTimingFunction(controlPoints: 0.5, 1 + rate, 0.25, 1)
-//
-//                let animationScale = CABasicAnimation(keyPath: "transform.scale")
-//                animationScale.duration = duration
-//                animationScale.repeatCount = HUGE
-//                animationScale.fromValue = fromScale
-//                animationScale.toValue = toScale
-//
-//                let animationPosition = CAKeyframeAnimation(keyPath: "position")
-//                animationPosition.duration = duration
-//                animationPosition.repeatCount = HUGE
-//                animationPosition.path = pathPosition2.cgPath
-//
-//                let animation = CAAnimationGroup()
-//                animation.animations = [animationScale, animationPosition]
-//                animation.timingFunction = timeFunc
-//                animation.duration = duration
-//                animation.repeatCount = HUGE
-//                animation.isRemovedOnCompletion = false
-//
-//                let chaseLayer = CAShapeLayer()
-//                chaseLayer.frame = CGRect(x: 0, y: 0, width: radius, height: radius)
-//                chaseLayer.path = path.cgPath
-//                chaseLayer.fillColor = self.contentColor?.cgColor ?? UIColor.white.cgColor
-//
-//                chaseLayer.add(animation, forKey: "animation")
-//
-//                self.layer.addSublayer(chaseLayer)
-//            }
-//        }
     }
 }
 

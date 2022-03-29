@@ -51,6 +51,7 @@ class ProgressView: UIView {
         progress.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
         progress.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         progress.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        progress.startAnimation()
         progress.layoutIfNeeded()
     }
 
@@ -65,27 +66,30 @@ class ProgressView: UIView {
         case .bounce:
             progress = Bounce()
         case .wave:
-            progress = Plane()
+            progress = Wave()
         case .pulse:
-            progress = Plane()
+            progress = Pulse()
         case .flow:
-            progress = Plane()
+            progress = Flow()
         case .swing:
-            progress = Plane()
+            progress = Swing()
         case .circle:
-            progress = Plane()
+            progress = Circle()
         case .fade:
-            progress = Plane()
+            progress = Fade()
         case .grid:
-            progress = Plane()
+            progress = Grid()
         case .fold:
-            progress = Plane()
+            progress = Fold()
         case .wander:
-            progress = Plane()
+            progress = Wander()
+        case .pendulum:
+            progress = Pendulum()
+        case .loopCircle:
+            progress = LoopCircle(progressModel)
         case .default:
             progress = Plane()
         }
-        progress.startAnimation()
         progress.backgroundColor = progressModel.progressBackgroundColor
         progress.setContentColor(progressModel.progressColor)
         return progress
