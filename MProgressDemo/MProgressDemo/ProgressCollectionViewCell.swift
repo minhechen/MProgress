@@ -88,7 +88,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
             MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
         case .loopCircle:
             titleText = "loopCircle"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[5])
+            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[6], shadeColor: UIColor.black.withAlphaComponent(0.3))
         case .default:
             titleText = "default"
             MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])

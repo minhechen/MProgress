@@ -12,7 +12,7 @@ public class MProgress {
     private var progresses: [Progress] = [Progress]()
     private var progressViews: [ProgressView] = [ProgressView]()
     let window = UIApplication.shared.windows.first
-    public class func show(_ message: String? = nil, context: AnyObject? = nil, identifer: String? = nil, type: ProgressType? = nil, backgroundColor: UIColor? = nil, progressColor: UIColor? = nil, progressBackgroundColor: UIColor? = nil) {
+    public class func show(_ message: String? = nil, context: AnyObject? = nil, identifer: String? = nil, type: ProgressType? = nil, backgroundColor: UIColor? = nil, progressColor: UIColor? = nil, progressBackgroundColor: UIColor? = nil, shadeColor: UIColor? = nil) {
 
         let progressModel = MProgressModel()
         progressModel.backgroundColor = backgroundColor ?? UIColor.white
@@ -22,7 +22,7 @@ public class MProgress {
         progressModel.context = context
         progressModel.identifier = identifer
         progressModel.progressType = type ?? .default
-        
+        progressModel.shadeColor = shadeColor ?? UIColor.black.withAlphaComponent(0.3)
         let progressView = self.showProgressView(progressModel)
         MProgress.shared.progressViews.append(progressView)
     }

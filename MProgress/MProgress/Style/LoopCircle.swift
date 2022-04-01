@@ -10,37 +10,37 @@ import UIKit
 class LoopCircle: Progress {
     private var contentColor: UIColor?
 
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-    }
-
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-    }
-
-    override public func draw(_ rect: CGRect) {
-        super.draw(rect)
-    }
+//    override func willMove(toSuperview newSuperview: UIView?) {
+//        super.willMove(toSuperview: newSuperview)
+//    }
+//
+//    override func didMoveToSuperview() {
+//        super.didMoveToSuperview()
+//    }
+//
+//    override public func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//    }
 
     override func setContentColor(_ color: UIColor) {
         self.contentColor = color
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-//        self.startAnimation()
-    }
-
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-    }
+//    public override func layoutSubviews() {
+//        super.layoutSubviews()
+//    }
+//
+//    override func layoutIfNeeded() {
+//        super.layoutIfNeeded()
+//    }
 
     override func startAnimation() {
         layer.sublayers?.removeAll()
         guard let progressModel = self.progressModel else { return }
         let rect = self.progressContextRect(progressModel)
-        let width = rect.width
-        let height = rect.height
+        let width = rect.width * progressScale * progressScale
+        let height = width
+        let space = rect.width >= 270.0 ? (rect.width * progressScale - width) / 2 : 0.0
 
         let beginTime: Double = 0.5
         let durationStart: Double = 1.2
@@ -73,7 +73,7 @@ class LoopCircle: Progress {
         let path = UIBezierPath(arcCenter: CGPoint(x: width/2, y: height/2), radius: width/2, startAngle: -0.5 * .pi, endAngle: 1.5 * .pi, clockwise: true)
 
         let tempLayer = CAShapeLayer()
-        tempLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        tempLayer.frame = CGRect(x: space, y: 0, width: width, height: height)
         tempLayer.path = path.cgPath
         tempLayer.fillColor = nil
         tempLayer.strokeColor = contentColor?.cgColor

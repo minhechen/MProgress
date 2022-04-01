@@ -108,7 +108,11 @@ class Progress: UIView {
                 // Error
                 fatalError("does not recognize context")
             }
+        } else {
+            let rect = CGRect(x: 0, y: 0, width: 270, height: 0)
+            return rect
         }
         return MProgress.shared.window?.bounds ?? CGRect.zero
     }
+
 }

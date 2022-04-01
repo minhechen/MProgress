@@ -9,6 +9,7 @@ import UIKit
 
 class ProgressView: UIView {
     var progressModel: MProgressModel?
+
     private var progress: Progress = Progress()
     lazy var contentView: UIView = {
         let view = UIView()
@@ -28,29 +29,51 @@ class ProgressView: UIView {
     private func setupUI() {
         guard let progressModel = self.progressModel else { return }
 
-        self.setupContentView()
+        self.setupContentView(progressModel)
         self.setupProgress(progressModel)
-        self.backgroundColor = progressModel.backgroundColor
+        self.backgroundColor = progressModel.shadeColor
     }
 
-    func setupContentView() {
+    func setupContentView(_ model: MProgressModel) {
         self.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
-        contentView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
-        contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+
+        if model.defaultUIStyle {
+            if model.contextRect().width >= 270 {
+                contentView.widthAnchor.constraint(equalToConstant: CGFloat(model.defaultWidth)).isActive = true
+            } else {
+                contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
+            }
+            contentView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
+            contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        } else {
+            contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
+            contentView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
+            contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        }
+        contentView.backgroundColor = model.backgroundColor
         contentView.layoutIfNeeded()
     }
 
-    func setupProgress(_ progressModel: MProgressModel) {
-        self.progress = self.progress(progressModel)
+    func setupProgress(_ model: MProgressModel) {
+        self.progress = self.progress(model)
         contentView.addSubview(progress)
         progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: progressScale).isActive = true
-        progress.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: progressScale).isActive = true
-        progress.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        progress.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        if model.defaultUIStyle {
+            progress.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: progressScale).isActive = true
+
+            progress.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: progressScale).isActive = true
+            progress.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+            progress.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        } else {
+            progress.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: progressScale).isActive = true
+            progress.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: progressScale).isActive = true
+            progress.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+            progress.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        }
+
         progress.startAnimation()
         progress.layoutIfNeeded()
     }
