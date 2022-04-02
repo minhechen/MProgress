@@ -37,9 +37,9 @@ class LoopCircle: Progress {
     override func startAnimation() {
         layer.sublayers?.removeAll()
         guard let progressModel = self.progressModel else { return }
-        let rect = self.progressContextRect(progressModel)
-        let width = rect.width * progressScale * progressScale
-        let height = width
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
         let space = rect.width >= 270.0 ? (rect.width * progressScale - width) / 2 : 0.0
 
         let beginTime: Double = 0.5

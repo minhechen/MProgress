@@ -21,7 +21,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 22, weight: .heavy)
+        label.font = .systemFont(ofSize: 12, weight: .heavy)
         label.textColor = UIColor.darkGray
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -49,52 +49,53 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         switch progressType {
         case .plane:
             titleText = "plane"
-            MProgress.show("Hello world!", context: self, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
+            MProgress.show("Hello world!", message: nil, context: self, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
         case .chase:
             titleText = "chase"
-            MProgress.show("Hello world!", context: self, type: .chase, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
+            MProgress.show("", message: nil, context: self, type: .chase, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
         case .bounce:
             titleText = "bounce"
-            MProgress.show("Hello world!", context: self, type: .bounce, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2])
+            MProgress.show("Hello world!", message: nil, context: self, type: .bounce, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2])
         case .wave:
             titleText = "wave"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[3])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[3])
         case .pulse:
             titleText = "pulse"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
         case .flow:
             titleText = "flow"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[5])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[5])
         case .swing:
             titleText = "swing"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[6], progressColor: .white, progressBackgroundColor: MColor.colors()[6])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[6], progressColor: .white, progressBackgroundColor: MColor.colors()[6])
         case .circle:
             titleText = "circle"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[7], progressColor: .white, progressBackgroundColor: MColor.colors()[7])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[7], progressColor: .white, progressBackgroundColor: MColor.colors()[7])
         case .fade:
             titleText = "fade"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
         case .grid:
             titleText = "grid"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
         case .fold:
             titleText = "fold"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2])
+            MProgress.show("Hello world!", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2])
         case .wander:
             titleText = "wander"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[3])
+            MProgress.show("", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
         case .pendulum:
             titleText = "pendulum"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
+            MProgress.show("Hello world!", message: "This is a progress message, you can custom what you want to custom message", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[5])
         case .loopCircle:
             titleText = "loopCircle"
-            MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[6], shadeColor: UIColor.black.withAlphaComponent(0.3))
+            MProgress.show("Hello world!", message: "This is a progress message, you can custom what you want to custom message", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[6], shadeColor: UIColor.black.withAlphaComponent(0.3))
         case .default:
             titleText = "default"
             MProgress.show("Hello world!", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4])
         }
 
         titleLabel.text = titleText
+        titleLabel.textAlignment = .center
     }
 
 }

@@ -12,12 +12,13 @@ public class MProgress {
     private var progresses: [Progress] = [Progress]()
     private var progressViews: [ProgressView] = [ProgressView]()
     let window = UIApplication.shared.windows.first
-    public class func show(_ message: String? = nil, context: AnyObject? = nil, identifer: String? = nil, type: ProgressType? = nil, backgroundColor: UIColor? = nil, progressColor: UIColor? = nil, progressBackgroundColor: UIColor? = nil, shadeColor: UIColor? = nil) {
+    public class func show(_ title: String? = nil, message: String? = nil, context: AnyObject? = nil, identifer: String? = nil, type: ProgressType? = nil, backgroundColor: UIColor? = nil, progressColor: UIColor? = nil, progressBackgroundColor: UIColor? = nil, shadeColor: UIColor? = nil) {
 
         let progressModel = MProgressModel()
         progressModel.backgroundColor = backgroundColor ?? UIColor.white
         progressModel.progressColor = progressColor ?? UIColor.white
         progressModel.progressBackgroundColor = progressBackgroundColor ?? UIColor.white
+        progressModel.title = title
         progressModel.message = message
         progressModel.context = context
         progressModel.identifier = identifer
