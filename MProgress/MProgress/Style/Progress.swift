@@ -69,6 +69,10 @@ class Progress: UIView {
         self.layoutIfNeeded()
     }
 
+    func setupContentModel(_ model: MProgressModel) {
+        self.progressModel = model
+    }
+
     func setCorner(_ cornerValue: CGFloat) {
         self.layer.cornerRadius = cornerValue
         self.clipsToBounds = true

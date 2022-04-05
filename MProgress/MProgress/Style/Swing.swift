@@ -38,7 +38,6 @@ class Swing: Progress {
         rightCircleLayer.frame = CGRect(origin: progressOrigin,
                                         size: circleSize)
         rightCircleLayer.path = UIBezierPath(ovalIn: CGRect(origin: .zero, size: circleSize)).cgPath
-        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
@@ -46,26 +45,32 @@ class Swing: Progress {
     }
 
     override func startAnimation() {
+
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
+
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = 0.2
         scaleAnimation.toValue = 1
         scaleAnimation.repeatCount = .infinity
-        scaleAnimation.duration = 1.8
+        scaleAnimation.duration = 1.6
         scaleAnimation.fillMode = .backwards
         scaleAnimation.autoreverses = true
         scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         let positionAnimation = CAKeyframeAnimation(keyPath: "position")
-        positionAnimation.path = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: progressSize.width / 4 + leftCircleLayer.frame.size.width / 16 + progressOrigin.x, y: progressSize.height / 4 + leftCircleLayer.frame.size.height / 16 + progressOrigin.y), size: CGSize(width: progressSize.width / 2, height: progressSize.height / 2 ))).cgPath
+        positionAnimation.path = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: width / 4 + leftCircleLayer.frame.size.width / 32, y: height / 4 + leftCircleLayer.frame.size.height / 32), size: CGSize(width: width / 2, height: height / 2 ))).cgPath
         positionAnimation.repeatCount = .infinity
         positionAnimation.fillMode = .backwards
-        positionAnimation.duration = 1.8
+        positionAnimation.duration = 1.6
         positionAnimation.calculationMode = .paced
 
         leftCircleLayer.add(positionAnimation, forKey: nil)
         leftCircleLayer.add(scaleAnimation, forKey: nil)
 
-        positionAnimation.beginTime = CACurrentMediaTime() + 0.3
+        positionAnimation.beginTime = CACurrentMediaTime() + 0.4
         scaleAnimation.toValue = CATransform3DScale(CATransform3DIdentity, 0.2, 0.2, 1)
         scaleAnimation.fromValue = CATransform3DIdentity
 

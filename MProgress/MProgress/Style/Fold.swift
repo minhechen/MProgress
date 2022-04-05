@@ -74,7 +74,6 @@ class Fold: Progress {
 
         firstReplicatorLayer.instanceTransform = CATransform3DRotate(CATransform3DIdentity, .pi / 2, 0, 0, 1)
         secondReplicatorLayer.instanceTransform = firstReplicatorLayer.instanceTransform
-        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
@@ -84,6 +83,33 @@ class Fold: Progress {
     override func startAnimation() {
         firstDiamondLayer.removeAllAnimations()
         secondDiamondLayer.removeAllAnimations()
+
+//        guard let progressModel = self.progressModel else { return }
+//        let rect = progressModel.progressRect()
+//        let width = rect.width
+//        let height = rect.height
+
+//        let diamondFrame = progressBounds.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+//
+//        wrapper.layer.bounds = progressBounds
+//        wrapper.layer.position = CGPoint(x: bounds.width / 2,
+//                                         y: bounds.height / 2)
+//
+//        firstDiamondLayer.frame = diamondFrame
+//        firstDiamondLayer.path = UIBezierPath(rect: diamondFrame).cgPath
+//        firstDiamondLayer.anchorPoint.x = 1
+//
+//        secondDiamondLayer.frame = firstDiamondLayer.frame
+//        secondDiamondLayer.path = firstDiamondLayer.path
+//        secondDiamondLayer.anchorPoint.x = firstDiamondLayer.anchorPoint.x
+//
+//        firstReplicatorLayer.frame = progressBounds
+//        secondReplicatorLayer.frame = progressBounds
+//
+//        firstReplicatorLayer.instanceTransform = CATransform3DRotate(CATransform3DIdentity, .pi / 2, 0, 0, 1)
+//        secondReplicatorLayer.instanceTransform = firstReplicatorLayer.instanceTransform
+
+
         let totalDuration: Double =  4
         let delayFactor = 0.2
 

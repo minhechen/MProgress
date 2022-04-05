@@ -30,16 +30,16 @@ class Wander: Progress {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let path = UIBezierPath(rect: CGRect(origin: .zero,
-                                             size: CGSize(width: progressSize.width / 4, height: progressSize.height / 4)))
-        leftSquareLayer.path = path.cgPath
-        leftSquareLayer.frame = CGRect(origin: progressOrigin,
-                                       size: CGSize(width: progressSize.width / 4,
-                                                    height: progressSize.height / 4))
-
-        rightSquareLayer.path = path.cgPath
-        rightSquareLayer.frame = leftSquareLayer.frame.applying(CGAffineTransform(translationX: 6 * progressSize.width / 8, y: 6 * progressSize.width / 8))
-        self.startAnimation()
+//        let path = UIBezierPath(rect: CGRect(origin: .zero,
+//                                             size: CGSize(width: progressSize.width / 4, height: progressSize.height / 4)))
+//        leftSquareLayer.path = path.cgPath
+//        leftSquareLayer.frame = CGRect(origin: progressOrigin,
+//                                       size: CGSize(width: progressSize.width / 4,
+//                                                    height: progressSize.height / 4))
+//
+//        rightSquareLayer.path = path.cgPath
+//        rightSquareLayer.frame = leftSquareLayer.frame.applying(CGAffineTransform(translationX: 6 * progressSize.width / 8, y: 6 * progressSize.width / 8))
+//        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
@@ -47,6 +47,21 @@ class Wander: Progress {
     }
 
     override func startAnimation() {
+
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
+
+        let path = UIBezierPath(rect: CGRect(origin: .zero,
+                                             size: CGSize(width: width / 8, height: height / 8)))
+        leftSquareLayer.path = path.cgPath
+        leftSquareLayer.frame = CGRect(origin: CGPoint(x: width / 4, y: height / 4),
+                                       size: CGSize(width: width / 8,
+                                                    height: height / 8))
+
+        rightSquareLayer.path = path.cgPath
+        rightSquareLayer.frame = leftSquareLayer.frame.applying(CGAffineTransform(translationX: 6 * width / 16, y: 6 * width / 16))
         
         let rotateAnim = CAKeyframeAnimation(keyPath: "transform.rotation.z")
         rotateAnim.values = [0, Double.pi / 2, Double.pi, 3 * Double.pi / 2, 2 * Double.pi]

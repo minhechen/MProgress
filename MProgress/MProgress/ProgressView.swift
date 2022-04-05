@@ -171,11 +171,12 @@ class ProgressView: UIView {
         case .pendulum:
             progress = Pendulum()
         case .loopCircle:
-            progress = LoopCircle(progressModel)
+            progress = LoopCircle()
         case .default:
             progress = Plane()
         }
-        progress.backgroundColor = progressModel.progressBackgroundColor
+        progress.setupContentModel(progressModel)
+        progress.backgroundColor = UIColor.red
         progress.setContentColor(progressModel.progressColor)
         return progress
     }

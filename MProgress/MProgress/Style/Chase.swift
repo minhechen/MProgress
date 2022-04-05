@@ -28,7 +28,6 @@ class Chase: Progress {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
@@ -37,8 +36,10 @@ class Chase: Progress {
 
     override func startAnimation() {
         layer.sublayers?.removeAll()
-        let width = self.bounds.width
-        let height = self.bounds.height
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
 
         let spacing: CGFloat = 3
         let radius = (width - 4 * spacing) / 5.0

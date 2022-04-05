@@ -25,7 +25,7 @@ class Wave: Progress {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        self.startAnimation()
+//        self.startAnimation()
     }
 
     override func layoutIfNeeded() {
@@ -34,8 +34,10 @@ class Wave: Progress {
 
     override func startAnimation() {
 
-        let width = self.bounds.width
-        let height = self.bounds.height
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
         let lineWidth = width / 9
 
         let beginTime = CACurrentMediaTime()

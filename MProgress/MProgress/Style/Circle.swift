@@ -45,7 +45,7 @@ class Circle: Progress {
             layer.bounds = layer.path!.boundingBox
             layer.position = CGPoint(x: center.x + radius * CGFloat(cos(index * Double.pi / 8)), y: center.y + radius * CGFloat(sin(index * Double.pi / 8)))
         }
-        self.startAnimation()
+//        self.startAnimation()
     }
 
     override func layoutIfNeeded() {

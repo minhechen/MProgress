@@ -16,11 +16,6 @@ class Grid: Progress {
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
 
-        for i in 0..<3 {
-//            let tempLayer = CAReplicatorLayer()
-//            layer.addSublayer(tempLayer)
-        }
-
         cubeRowReplicatorLayer.instanceCount = 3
         gridReplicatorLayer.instanceCount = 3
 
@@ -50,7 +45,7 @@ class Grid: Progress {
 
         let transform = CATransform3DIdentity
         gridReplicatorLayer.transform = CATransform3DRotate(transform, .pi, 1, 0, 0)
-        self.startAnimation()
+
     }
 
     override func layoutIfNeeded() {
