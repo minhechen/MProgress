@@ -52,7 +52,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
             MProgress.show("Hello world!", message: nil, context: self, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0])
         case .chase:
             titleText = "chase"
-            MProgress.show("", message: nil, context: self, type: .chase, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
+            MProgress.show("chase...", message: "this is a chasing message", context: self.superview, type: .chase, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1])
         case .bounce:
             titleText = "bounce"
             MProgress.show("Hello world!", message: nil, context: self, type: .bounce, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2])

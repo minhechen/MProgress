@@ -176,7 +176,7 @@ class ProgressView: UIView {
             progress = Plane()
         }
         progress.setupContentModel(progressModel)
-        progress.backgroundColor = UIColor.red
+        progress.backgroundColor = progressModel.progressBackgroundColor
         progress.setContentColor(progressModel.progressColor)
         return progress
     }
