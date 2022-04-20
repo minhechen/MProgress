@@ -13,7 +13,6 @@ class ProgressView: UIView {
     private var progress: Progress = Progress()
     lazy var contentView: UIView = {
         let view = UIView()
-//        view.clipsToBounds = true
         return view
     }()
 
@@ -51,6 +50,10 @@ class ProgressView: UIView {
         self.setupTitle(progressModel)
         self.setupMessage(progressModel)
         self.backgroundColor = progressModel.shadeColor
+        if progressModel.interactionEnabled {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+            self.addGestureRecognizer(tapGesture)
+        }
     }
 
     func setupContentView(_ model: MProgressModel) {
@@ -66,7 +69,6 @@ class ProgressView: UIView {
         } else {
             contentView.widthAnchor.constraint(equalToConstant: CGFloat(model.contentRect().width)).isActive = true
             contentView.heightAnchor.constraint(equalToConstant: CGFloat(model.contentRect().height)).isActive = true
-//            contentView.heightAnchor.constraint(equalToConstant: CGFloat(model.contextRect().height)).isActive = true
             contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
             contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         }
@@ -179,5 +181,18 @@ class ProgressView: UIView {
         progress.backgroundColor = progressModel.progressBackgroundColor
         progress.setContentColor(progressModel.progressColor)
         return progress
+    }
+
+    @objc func tapGestureAction() {
+        self.dismissView()
+    }
+
+    func dismissView() {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIView.AnimationOptions.curveEaseInOut) {
+            self.alpha = 0.0
+        } completion: { result in
+            self.removeFromSuperview()
+        }
+
     }
 }

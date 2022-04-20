@@ -46,6 +46,7 @@ class Bounce: Progress {
 
     override func startAnimation() {
         super.startAnimation()
+
         let animation = CABasicAnimation(keyPath: "transform.scale")
         animation.duration = 0.5
         animation.fromValue = 1.0

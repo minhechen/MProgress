@@ -39,6 +39,7 @@ class MProgressModel: NSObject {
     let defaultWidth: CGFloat = 270
     var shadeColor: UIColor = UIColor.black.withAlphaComponent(0.3)
     var marginSpace: CGFloat = 17.0
+    var interactionEnabled: Bool = false
     /// Porgress super view
     /// - Returns: context rect
     func contextRect() -> CGRect {

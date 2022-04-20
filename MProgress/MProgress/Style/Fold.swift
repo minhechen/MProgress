@@ -14,18 +14,23 @@ class Fold: Progress {
     private var firstReplicatorLayer = CAReplicatorLayer()
     private var secondReplicatorLayer = CAReplicatorLayer()
     private var contentColor: UIColor?
-    var contentSize: CGSize {
-        let insets = (pow(progressInsets.top, 2) + pow(progressInsets.left, 2)).squareRoot()
-        let size = 0.7 * min(bounds.width - 2 * insets,
-                       bounds.height - 2 * insets)
-        return CGSize(width: size, height: size)
-    }
+//    var contentSize: CGSize {
+//        let insets = (pow(progressInsets.top, 2) + pow(progressInsets.left, 2)).squareRoot()
+//        let size = 0.7 * min(bounds.width - 2 * insets,
+//                       bounds.height - 2 * insets)
+//        return CGSize(width: size, height: size)
+//    }
 
-    private var wrapper: UIView!
+
+    private lazy var wrapper: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.red
+        return view
+    }()
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
-        wrapper = UIView()
+
         firstReplicatorLayer.instanceCount = 4
         firstReplicatorLayer.addSublayer(firstDiamondLayer)
 
@@ -55,25 +60,7 @@ class Fold: Progress {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let diamondFrame = progressBounds.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
-
-        wrapper.layer.bounds = progressBounds
-        wrapper.layer.position = CGPoint(x: bounds.width / 2,
-                                         y: bounds.height / 2)
-
-        firstDiamondLayer.frame = diamondFrame
-        firstDiamondLayer.path = UIBezierPath(rect: diamondFrame).cgPath
-        firstDiamondLayer.anchorPoint.x = 1
-
-        secondDiamondLayer.frame = firstDiamondLayer.frame
-        secondDiamondLayer.path = firstDiamondLayer.path
-        secondDiamondLayer.anchorPoint.x = firstDiamondLayer.anchorPoint.x
-
-        firstReplicatorLayer.frame = progressBounds
-        secondReplicatorLayer.frame = progressBounds
-
-        firstReplicatorLayer.instanceTransform = CATransform3DRotate(CATransform3DIdentity, .pi / 2, 0, 0, 1)
-        secondReplicatorLayer.instanceTransform = firstReplicatorLayer.instanceTransform
+        self.updateProgressDisplay()
     }
 
     override func layoutIfNeeded() {
@@ -81,34 +68,8 @@ class Fold: Progress {
     }
 
     override func startAnimation() {
-        firstDiamondLayer.removeAllAnimations()
-        secondDiamondLayer.removeAllAnimations()
 
-//        guard let progressModel = self.progressModel else { return }
-//        let rect = progressModel.progressRect()
-//        let width = rect.width
-//        let height = rect.height
-
-//        let diamondFrame = progressBounds.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
-//
-//        wrapper.layer.bounds = progressBounds
-//        wrapper.layer.position = CGPoint(x: bounds.width / 2,
-//                                         y: bounds.height / 2)
-//
-//        firstDiamondLayer.frame = diamondFrame
-//        firstDiamondLayer.path = UIBezierPath(rect: diamondFrame).cgPath
-//        firstDiamondLayer.anchorPoint.x = 1
-//
-//        secondDiamondLayer.frame = firstDiamondLayer.frame
-//        secondDiamondLayer.path = firstDiamondLayer.path
-//        secondDiamondLayer.anchorPoint.x = firstDiamondLayer.anchorPoint.x
-//
-//        firstReplicatorLayer.frame = progressBounds
-//        secondReplicatorLayer.frame = progressBounds
-//
-//        firstReplicatorLayer.instanceTransform = CATransform3DRotate(CATransform3DIdentity, .pi / 2, 0, 0, 1)
-//        secondReplicatorLayer.instanceTransform = firstReplicatorLayer.instanceTransform
-
+        self.updateProgressDisplay()
 
         let totalDuration: Double =  4
         let delayFactor = 0.2
@@ -172,5 +133,33 @@ class Fold: Progress {
         secondAnimGroup.repeatCount = .infinity
 
         secondDiamondLayer.add(secondAnimGroup, forKey: nil)
+    }
+
+    func updateProgressDisplay() {
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
+        let tempBounds = rect.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+
+        let diamondFrame = tempBounds.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+
+        wrapper.layer.bounds = tempBounds
+        wrapper.layer.position = CGPoint(x: width / 2,
+                                         y: height / 2)
+
+        firstDiamondLayer.frame = diamondFrame
+        firstDiamondLayer.path = UIBezierPath(rect: diamondFrame).cgPath
+        firstDiamondLayer.anchorPoint.x = 1
+
+        secondDiamondLayer.frame = firstDiamondLayer.frame
+        secondDiamondLayer.path = firstDiamondLayer.path
+        secondDiamondLayer.anchorPoint.x = firstDiamondLayer.anchorPoint.x
+
+        firstReplicatorLayer.frame = tempBounds
+        secondReplicatorLayer.frame = tempBounds
+
+        firstReplicatorLayer.instanceTransform = CATransform3DRotate(CATransform3DIdentity, .pi / 2, 0, 0, 1)
+        secondReplicatorLayer.instanceTransform = firstReplicatorLayer.instanceTransform
     }
 }

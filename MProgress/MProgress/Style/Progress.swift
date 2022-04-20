@@ -15,6 +15,14 @@ class Progress: UIView {
 
     var progressModel: MProgressModel?
 
+//    var progressRect: CGRect {
+//        guard let progressModel = self.progressModel else {
+//            return CGRect(origin: progressOrigin, size: progressSize)
+//        }
+//        let rect = progressModel.progressRect()
+//        return rect
+//    }
+    
     var progressInsets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12) {
         didSet {
             setNeedsLayout()

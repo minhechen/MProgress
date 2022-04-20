@@ -67,8 +67,50 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController {
+    func showProgress(_ progressType: ProgressType) {
+        
+        switch progressType {
+        case .plane:
+            MProgress.show("plane...", message: nil, context: self, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0], interactionEnabled: true)
+        case .chase:
+            MProgress.show("chase...", message: "this is a chasing message", context: self, type: .chase, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1], interactionEnabled: true)
+        case .bounce:
+            MProgress.show("bounce...", message: nil, context: self, type: .bounce, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[2], interactionEnabled: true)
+        case .wave:
+            MProgress.show("wave...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[3], interactionEnabled: true)
+        case .pulse:
+            MProgress.show("pulse...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4], interactionEnabled: true)
+        case .flow:
+            MProgress.show("flow...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[5], interactionEnabled: true)
+        case .swing:
+            MProgress.show("swing...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[6], progressColor: .white, progressBackgroundColor: MColor.colors()[6], interactionEnabled: true)
+        case .circle:
+            MProgress.show("circle...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[7], progressColor: .white, progressBackgroundColor: MColor.colors()[7], interactionEnabled: true)
+        case .fade:
+            MProgress.show("fade...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[0], progressColor: .white, progressBackgroundColor: MColor.colors()[0], interactionEnabled: true)
+        case .grid:
+            MProgress.show("grid...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[1], progressColor: .white, progressBackgroundColor: MColor.colors()[1], interactionEnabled: true)
+        case .fold:
+            MProgress.show("fold...", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[2], progressColor: .white, progressBackgroundColor: MColor.colors()[3], interactionEnabled: true)
+        case .wander:
+            MProgress.show("wander", message: nil, context: self, type: progressType, backgroundColor: MColor.colors()[3], progressColor: .white, progressBackgroundColor: MColor.colors()[4], interactionEnabled: true)
+        case .pendulum:
+            MProgress.show("pendulum", message: "This is a progress message, you can custom what you want to custom message", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[5], interactionEnabled: true)
+        case .loopCircle:
+            MProgress.show("loop circle", message: "This is a progress message, you can custom what you want to custom message", context: self, type: progressType, backgroundColor: MColor.colors()[5], progressColor: .white, progressBackgroundColor: MColor.colors()[6], shadeColor: UIColor.black.withAlphaComponent(0.3), interactionEnabled: true)
+        case .default:
+            MProgress.show("default...", context: self, type: progressType, backgroundColor: MColor.colors()[4], progressColor: .white, progressBackgroundColor: MColor.colors()[4], interactionEnabled: true)
+        }
+    }
+}
+
 extension ViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let progressType = progresses[indexPath.row]
+        self.showProgress(progressType)
+    }
 
 }
 

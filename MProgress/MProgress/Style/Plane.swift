@@ -31,8 +31,8 @@ class Plane: Progress {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        progressLayer.path = UIBezierPath(rect: self.bounds).cgPath
-        progressLayer.frame = self.bounds
+//        progressLayer.path = UIBezierPath(rect: self.bounds).cgPath
+//        progressLayer.frame = self.bounds
     }
 
     override func layoutIfNeeded() {
@@ -41,6 +41,15 @@ class Plane: Progress {
 
     override func startAnimation() {
         super.startAnimation()
+        guard let progressModel = self.progressModel else { return }
+        let rect = progressModel.progressRect()
+        let width = rect.width
+        let height = rect.height
+        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        progressLayer.path = UIBezierPath(rect: bounds).cgPath
+        progressLayer.frame = bounds
+
+
         var yRotation = CATransform3DRotate(CATransform3DIdentity, .pi, 1.0, 0, 0)
         yRotation.m34 = -1.0/180
         var zRoatation = CATransform3DRotate(CATransform3DIdentity, .pi, 0, 0, 1.0)
